@@ -1,0 +1,49 @@
+# This program calculate the 12th digit (check digit) of a UPC code
+def find_UPC(first_11_digits):
+   # set a variable for the sum of odd and even position digits
+   odd_sum = 0
+   even_sum = 0
+
+   # Loop through each the first 11 digits
+   for i in range(11):
+      digit = int(first_11_digits[i])  
+      if i % 2 == 0:
+         odd_sum += digit
+      else:
+         even_sum += digit
+
+   # multiply odd positions by 3, add even positions
+   total_sum = (odd_sum * 3) + even_sum
+   check_digit = (10 - (total_sum % 10)) % 10
+
+   # return the calculated check digit
+   return check_digit
+
+# get UPC input from user
+upc = input("Enter a 12-digit UPC: ")
+# loop through input to check if it is 12 digits if not ask user to input again
+while len(upc) != 12 or not upc.isdigit():
+    print("Invalid input. Please enter a 12-digit UPC.")
+    upc = input("Enter a 12-digit UPC: ")
+
+# get first 11 digits and the 12th digit
+first_11_digits = upc[:11]
+provided_check_digit = int(upc[11])
+
+print()
+print(f"The first 11 digits are '{first_11_digits}'.")
+print(f"The provided check digit is '{provided_check_digit}'.")
+print()
+print("Calculating...")
+
+# calculate what the check digit should be
+expected_check_digit = find_UPC(first_11_digits)
+
+print(f"The expected check digit is {expected_check_digit}.")
+print()
+
+# compare calculated check digit with the last digit
+if expected_check_digit == provided_check_digit:
+    print("This is a VALID UPC.")
+else:
+    print("This is an INVALID UPC.")
