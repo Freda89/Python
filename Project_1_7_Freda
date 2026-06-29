@@ -1,0 +1,27 @@
+"""
+Program Name: Project 1-7 Study Planner
+Author: Freda Acquah
+Purpose: This program lets the user make a study task list, view the list,
+    mark tasks complete, and see a short summary.
+Starter Code: No starter code was used.
+Date: June 28, 2026
+"""
+
+categories = ("Python", "Math", "Reading", "Personal")
+priority_names = {
+    1: "Low",
+    2: "Medium",
+    3: "High",
+}
+
+
+def show_menu():
+    # Display the main menu options to the user.
+    print("\nStudy Planner Menu")
+    print("1. Add a task")
+    print("2. View active tasks")
+    print("3. Mark a task complete")
+    print("4. View summary")
+    print("5. View all tasks")
+    print("6. Quit")
+
